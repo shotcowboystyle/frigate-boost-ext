@@ -1,0 +1,12 @@
+{
+  "words": [
+    "commitlint",
+    "nrwl",
+    "pnpm",
+    "webext",
+    "webextension"
+  ],
+  "enableFiletypes": [
+    "mdx"
+  ]
+}

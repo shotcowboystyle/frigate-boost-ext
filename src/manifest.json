@@ -1,0 +1,42 @@
+{
+  "{{chrome}}.manifest_version": 3,
+  "{{firefox}}.manifest_version": 2,
+  "icons": {
+    "128": "assets/icons/128x128.png"
+  },
+  "{{chrome}}.action": {
+    "default_popup": "popup/index.html"
+  },
+  "{{firefox}}.browser_action": {
+    "default_popup": "popup/index.html"
+  },
+  "options_ui": {
+    "page": "options/index.html",
+    "open_in_tab": true,
+    "{{firefox}}.browser_style": true
+  },
+  "background": {
+    "{{chrome}}.service_worker": "background.ts",
+    "{{firefox}}.scripts": ["background.ts"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://frigate.peanutbutterporkchop.com/events*"],
+      "js": ["content-scripts/events-page.tsx"],
+      "run_at": "document_end",
+      "all_frames": false
+    },
+    {
+      "matches": ["https://frigate.peanutbutterporkchop.com/recording/*"],
+      "js": ["content-scripts/video-controller.ts"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "permissions": [
+    "tabs",
+    "{{firefox}}.<all_urls>",
+    "{{chrome}}.activeTab",
+    "storage"
+  ]
+}
